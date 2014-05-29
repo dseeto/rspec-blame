@@ -1,7 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = "rspec-blame"
   s.version     = "0.1.2"
-  s.date        = "2014-05-23"
   s.license     = "MIT"
 
   s.authors     = ["David Seeto"]

@@ -1,20 +1,30 @@
 # rspec-blame
 
-rspec-blame provides a Blame RSpec foramtter that outputs the author, commit hash, and
+rspec-blame provides a Blame RSpec formatter that outputs the author, commit hash, and
 commit date for the slowest examples when profiling with RSpec in a **git** project.
 
-## Usage
+### Usage
 
-    gem 'rspec-blame'
+```
+gem "rspec-blame"
+```
 
 After including the above line in your Gemfile and running `bundle install`, there are
 several ways to use the formatter:
 
-### Command Line
+#### Command Line
 
-`rspec --require rspec/blame --profile --format Blame file_spec.rb` or `rspec -r rspec/blame -p -f Blame file_spec.rb`
+```
+rspec --require rspec/blame --profile --format Blame file_spec.rb
+```
 
-### Rake Task
+or
+
+```
+rspec -r rspec/blame -p -f Blame file_spec.rb`
+```
+
+#### Rake Task
 
 ```ruby
 require "rspec/blame"
@@ -23,9 +33,14 @@ require "rspec/core/rake_task"
 RSpec::Core::RakeTask.new(:spec) { |t| t.rspec_opts = "-p -f Blame" }
 ```
 
-### Configure RSpec
+#### Configure RSpec
 
-Add `--require "rspec/blame"`, `--profile`, and `--format Blame` to your `.rspec` file.
+Add the following to your `.rspec` file:
+```
+--require "rspec/blame"
+--profile
+--format Blame
+```
 
 Alternatively, add `require "spec_helper"` to any spec files and add the following to
 your spec_helper.rb:
@@ -37,7 +52,7 @@ Rspec.configure do |config|
 end
 ```
 
-## Output
+### Output
 
 ```
 ......
@@ -60,7 +75,7 @@ Finished in 0.00792 seconds
 6 examples, 0 failures
 ```
 
-## Author
+### Author
 
 [David Seeto](https://github.com/dseeto)
 
