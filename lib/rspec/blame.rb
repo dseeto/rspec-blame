@@ -1,11 +1,8 @@
 require "rspec/core/formatters/progress_formatter"
 
 # Formatter that ouputs git blame details for the slowest examples.
-# Requirements: Project must be version controlled with git.
-# Usage: `rspec --profile --formatter Blame rspec_file.rb` or `rspec -p -f Blame rspec_file.rb`
-# Alternative Usage: require "rspec/blame"; RSpec::Core::RakeTask.new(:task) { |t| t.rspec_opts = "-p -f Blame" }
 class Blame < RSpec::Core::Formatters::ProgressFormatter
-  # Overrides ProgressFormatter's output.
+  # Appends to ProgressFormatter's output by executing git blame in a subprocess and parsing its output.
   def dump_profile_slowest_examples
     number_of_examples_to_profile = RSpec.configuration.profile_examples
 
