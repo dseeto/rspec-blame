@@ -3,55 +3,6 @@
 rspec-blame provides a Blame RSpec formatter that outputs the author, commit hash, and
 commit date for the slowest examples when profiling with RSpec in a **git** project.
 
-### Usage
-
-```
-gem "rspec-blame"
-```
-
-After including the above line in your Gemfile and running `bundle install`, there are
-several ways to use the formatter:
-
-#### Command Line
-
-```
-rspec --require rspec/blame --profile --format Blame file_spec.rb
-```
-
-or
-
-```
-rspec -r rspec/blame -p -f Blame file_spec.rb`
-```
-
-#### Rake Task
-
-```ruby
-require "rspec/blame"
-require "rspec/core/rake_task"
-
-RSpec::Core::RakeTask.new(:spec) { |t| t.rspec_opts = "-p -f Blame" }
-```
-
-#### Configure RSpec
-
-Add the following to your `.rspec` file:
-```
---require "rspec/blame"
---profile
---format Blame
-```
-
-Alternatively, add `require "spec_helper"` to any spec files and add the following to
-your spec_helper.rb:
-
-```ruby
-Rspec.configure do |config|
-  config.profile_examples = true
-  config.format = Blame
-end
-```
-
 ### Output
 
 ```
@@ -73,6 +24,58 @@ Blame dump_profile_slowest_examples prints the name of the examples
 
 Finished in 0.00792 seconds
 6 examples, 0 failures
+```
+
+### Usage
+
+```
+gem "rspec-blame"
+```
+
+After including the above line in your Gemfile and running `bundle install`, there are
+several ways to use the formatter:
+
+#### Command Line
+
+```
+rspec -r rspec/blame -p -f Blame file_spec.rb`
+```
+
+or
+
+```
+rspec --require rspec/blame --profile --format Blame file_spec.rb
+```
+
+#### Rake Task
+
+```
+require "rspec/blame"
+require "rspec/core/rake_task"
+
+RSpec::Core::RakeTask.new(:spec) { |t| t.rspec_opts = "-p -f Blame" }
+```
+
+#### Configure RSpec
+
+Add the following to your `.rspec` file:
+
+```
+--require "rspec/blame"
+--profile
+--format Blame
+```
+
+Alternatively, add `require "spec_helper"` to any spec files and add the following to
+your spec_helper.rb:
+
+```
+require "rspec/blame"
+
+Rspec.configure do |config|
+  config.profile_examples = true
+  config.formatter = Blame
+end
 ```
 
 ### Author
