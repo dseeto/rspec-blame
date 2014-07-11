@@ -35,43 +35,40 @@ gem "rspec-blame"
 After including the above line in your Gemfile and running `bundle install`, there are
 several ways to use the formatter:
 
-#### Command Line
+#### Command Line With Specific Spec Files
 
 ```
-rspec -r rspec/blame -p -f Blame file_spec.rb`
+rspec -p -f Blame file_spec.rb`
 ```
 
 or
 
 ```
-rspec --require rspec/blame --profile --format Blame file_spec.rb
+rspec --profile --format Blame file_spec.rb
 ```
 
 #### Rake Task
 
 ```
-require "rspec/blame"
 require "rspec/core/rake_task"
 
 RSpec::Core::RakeTask.new(:spec) { |t| t.rspec_opts = "-p -f Blame" }
 ```
 
-#### Configure RSpec
+#### Any Usage of RSpec
 
 Add the following to your `.rspec` file:
 
 ```
---require "rspec/blame"
 --profile
 --format Blame
 ```
 
-Alternatively, add `require "spec_helper"` to any spec files and add the following to
+#### With Spec Helper
+Add `require "spec_helper"` to any spec files and add the following to
 your spec_helper.rb:
 
 ```
-require "rspec/blame"
-
 Rspec.configure do |config|
   config.profile_examples = true
   config.formatter = Blame
