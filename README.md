@@ -1,14 +1,14 @@
 # rspec-blame
 
-rspec-blame provides a Blame RSpec formatter that outputs the author, commit hash, and
-commit date for the slowest examples when profiling with RSpec in a **git** project. It
+rspec-blame provides a Blame RSpec formatter that outputs the author, date, and commit hash
+for the slowest examples when profiling with RSpec in a **git** project. It
 also allows a profile threshold to be set, only printing examples that exceed the threshold.
 
 ### Goals
 
 In an application that has good test coverage and is managed by multiple people, tests are
 constantly added and executed. Often, code that result in slow tests can make the development
-process slow as well. To avoid this problem, this gem attempts to faciliate good practices
+process slow as well. To avoid this problem, this gem attempts to facilitate good practices
 through accomplishing the following goals:
 
 * Output the commit information of the slow tests, allowing the developer who last touched it
@@ -66,7 +66,7 @@ gem "rspec-blame"
 ```
 
 After including the above line in your Gemfile and running `bundle install`, you may set a profile
-threshold by adding the following to `spec/spec_herlper.rb`:
+threshold by adding the following to `spec/spec_helper.rb`:
 
 ```
 RSpec.configure do |config|
