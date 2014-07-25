@@ -1,0 +1,4 @@
+--profile
+--color
+--format RSpec::Blame
+--require spec_helper
