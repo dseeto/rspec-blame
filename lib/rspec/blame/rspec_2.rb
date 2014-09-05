@@ -112,7 +112,7 @@ class Blame < RSpec::Core::Formatters::ProgressFormatter
   end
 
   def _number_of_examples_to_profile
-    RSpec.configuration.profile_examples
+    RSpec.configuration.profile_examples || 0
   end
 
   def _profile_threshold
